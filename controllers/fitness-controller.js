@@ -32,7 +32,7 @@ module.exports={
 
     getWorkoutsInRange: async (req,res)=>{
         try{
-    const workOut = await Fitness.find();
+    const workOut = await Fitness.findById(req.params.id);
     let totalDuration = 0;
      await workOut.exercises.forEach((workout)=>{
          totalDuration += workout.duration;

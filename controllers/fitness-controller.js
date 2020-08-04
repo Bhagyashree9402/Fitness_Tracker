@@ -39,7 +39,7 @@ module.exports={
     // }
     getWorkoutsInRange: (req, res) => {
         Fitness.find()
-        .then((rangeWorkout) => res.json(rangeWorkout))
+        .then((workoutRange) => res.send(workoutRange))
         .catch((err) => res.send(err));
     },
    

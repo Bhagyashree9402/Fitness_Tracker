@@ -37,6 +37,10 @@ module.exports={
     //         res.send(err);
     //     }
     // }
-
+    getWorkoutsInRange: (req, res) => {
+        Fitness.find()
+        .then((rangeWorkout) => res.json(rangeWorkout))
+        .catch((err) => res.send(err));
+    },
    
 }

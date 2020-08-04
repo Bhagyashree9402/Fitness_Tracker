@@ -1,5 +1,5 @@
 let mongoose = require("mongoose");
-let db = require("../models");
+let db = require("../models/fitness");
 
 mongoose.connect("mongodb://localhost/workout_db", {
   useNewUrlParser: true,
@@ -122,17 +122,28 @@ let workoutSeed = [
       }
     ]
   },
+  // {
+  //   day: new Date().setDate(new Date().getDate()-1),
+  //   exercises: [
+  //     {
+  //       type: "resistance",
+  //       name: "Bench",
+  //       duration: 30,
+  //       distance: 2
+  //     }
+  //   ]
+  // }
   {
-    day: new Date().setDate(new Date().getDate()-1),
+    day: new Date().setDate(new Date().getDate() - 1),
     exercises: [
       {
-        type: "resistance",
-        name: "Bench",
-        duration: 30,
-        distance: 2
-      }
-    ]
-  }
+        type: "cardio",
+        name: "Running",
+        duration: 25,
+        distance: 4,
+      },
+    ],
+  },
 ];
 
 db.Workout.deleteMany({})

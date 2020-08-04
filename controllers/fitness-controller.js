@@ -13,7 +13,7 @@ module.exports={
         const fitness = await Fitness.findById(req.params.id);
         console.log(fitness);
         fitness.exercises.push(req.body);
-        fitness.totalDuration=req.body.duration;
+        //fitness.totalDuration=req.body.duration;
         await fitness.save();
         res.send(fitness);
        }catch(err){
@@ -32,12 +32,14 @@ module.exports={
 
     getWorkoutsInRange: async (req,res)=>{
         try{
-    const workOut = await Fitness.findById(req.params.id);
+    const workOut = await Fitness.find();
     let totalDuration = 0;
      await workOut.exercises.forEach((workout)=>{
          totalDuration += workout.duration;
-
-     })
+        })
+        workOut.totalDuration=totalDuration;
+        await workOut.save();
+        res.send(workOut);
 
         }catch(err){
             res.send(err);

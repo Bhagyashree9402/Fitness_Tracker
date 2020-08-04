@@ -11,7 +11,17 @@ module.exports={
    addExercise: async(req,res)=>{
        try{
         const fitness = await Fitness.findById(req.params.id);
-        console.log(fitness);
+        if (fitness.totalDuration > 0){
+            fitness.totalDuration = fitness.totalDuration + req.body.duration;
+        }else{
+            fitness.exercises.forEach(async function(excercise) {
+                
+                fitness.totalDuration = fitness.totalDuration + excercise.duration;
+                console.log(fitness.totalDuration);
+                console.log(excercise.duration);
+            });
+            fitness.totalDuration = fitness.totalDuration + req.body.duration;
+        }
         fitness.exercises.push(req.body);
         await fitness.save();
         res.send(fitness);

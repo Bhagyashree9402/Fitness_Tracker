@@ -51,6 +51,7 @@ const fitnessSchema = new Schema({
      
     totalDuration :{
         type:Number,
+        default: 0,
     }
 
 });

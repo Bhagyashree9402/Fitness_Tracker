@@ -13,6 +13,7 @@ module.exports={
         const fitness = await Fitness.findById(req.params.id);
         console.log(fitness);
         fitness.exercises.push(req.body);
+        fitness.totalDuration=req.body.duration;
         await fitness.save();
         res.send(fitness);
        }catch(err){
